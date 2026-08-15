@@ -53,16 +53,16 @@ pipeline {
         }
 
         stage('Verify') {
-            steps {
-                echo 'Waiting for Tomcat to deploy WAR'
+    steps {
+        echo 'Waiting for Tomcat to deploy WAR'
 
-                bat 'timeout /t 10 /nobreak'
+        sleep(time: 10, unit: 'SECONDS')
 
-                echo 'Checking deployed application'
+        echo 'Checking deployed application'
 
-                bat 'curl.exe --fail http://localhost:8082/jenkins-demo/'
-            }
-        }
+        bat 'curl.exe --fail http://localhost:8082/jenkins-demo/'
+    }
+}
     }
 
     post {
